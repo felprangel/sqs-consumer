@@ -1,0 +1,19 @@
+services:
+  sqs-consumer:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: whatsapp-sqs-consumer
+    restart: unless-stopped
+    environment:
+      - SQS_ENDPOINT=http://192.168.0.140:9324
+      - SQS_QUEUE_URL=http://192.168.0.140:9324/000000000000/whatsapp.fifo
+      - AWS_REGION=sa-east-1
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    networks:
+      - sqs-network
+
+networks:
+  sqs-network:
+    driver: bridge
