@@ -1,5 +1,5 @@
 ## Utilização
-Crie um `.env` seguindo o exemplo do `.env.example` (Vou dar um exemplo com uma fila local com [elasticmq](https://github.com/softwaremill/elasticmq):
+Crie um `.env` seguindo o exemplo do `.env.example` (Vou dar um exemplo com uma fila local com [elasticmq](https://github.com/softwaremill/elasticmq)):
 
 ```env
 SQS_ENDPOINT=http://localhost:9324
