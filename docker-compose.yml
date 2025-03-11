@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: whatsapp-sqs-consumer
+    container_name: sqs-consumer
     restart: unless-stopped
     environment:
       SQS_ENDPOINT: ${SQS_ENDPOINT}
