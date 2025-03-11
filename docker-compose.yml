@@ -6,11 +6,11 @@ services:
     container_name: whatsapp-sqs-consumer
     restart: unless-stopped
     environment:
-      - SQS_ENDPOINT=http://192.168.0.140:9324
-      - SQS_QUEUE_URL=http://192.168.0.140:9324/000000000000/whatsapp.fifo
-      - AWS_REGION=sa-east-1
-      - AWS_ACCESS_KEY_ID=test
-      - AWS_SECRET_ACCESS_KEY=test
+      SQS_ENDPOINT: ${SQS_ENDPOINT}
+      SQS_QUEUE_URL: ${SQS_QUEUE_URL}
+      AWS_REGION: ${AWS_REGION}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
     networks:
       - sqs-network
 
