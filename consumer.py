@@ -30,17 +30,11 @@ queue = sqs.Queue(QUEUE_URL)
 running = True
 
 def process_message(message_body):
-    """
-    Processa a mensagem recebida da fila
-    """
     try:
         data = json.loads(message_body)
 
-        # Exibir informações da mensagem
         print(f"Processando mensagem: {json.dumps(data, indent=2)}")
 
-        # Aqui você implementa sua lógica específica de processamento
-        # Por exemplo, enviar uma mensagem via WhatsApp, salvar em banco de dados, etc.
         print(f"Mensagem processada com sucesso!")
         return True
     except Exception as e:
@@ -48,17 +42,11 @@ def process_message(message_body):
         return False
 
 def signal_handler(sig, frame):
-    """
-    Manipulador de sinal para encerramento gracioso
-    """
     global running
     print("Encerrando o consumidor...")
     running = False
 
 def main():
-    """
-    Função principal que consome mensagens da fila SQS FIFO
-    """
     print(f"Iniciando consumidor para a fila: {QUEUE_URL}")
     print(f"Usando endpoint SQS: {SQS_ENDPOINT}")
 
@@ -84,10 +72,6 @@ def main():
                     print(f"Mensagem {message.message_id} excluída da fila")
                 else:
                     print(f"Mensagem {message.message_id} não foi processada e permanecerá na fila")
-
-            # Se não houver mensagens, esperar um pouco antes de tentar novamente
-            if not messages:
-                print("Nenhuma mensagem disponível. Aguardando...")
 
         except ClientError as e:
             print(f"Erro ao acessar a fila SQS: {e}")
